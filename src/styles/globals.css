@@ -1,0 +1,53 @@
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% 10%, rgba(120,200,255,0.14), transparent 55%),
+              radial-gradient(1000px 700px at 80% 20%, rgba(190,120,255,0.12), transparent 60%),
+              linear-gradient(180deg, #05070b 0%, #02030a 100%);
+  font-family: var(--font-sans);
+}
+
+/* tailwind helper colors via classes */
+.bg-ink { background-color: #05070b; }
+
+.font-display { font-family: var(--font-display); }
+
+/* DRY ICE FOG (pure CSS layers) */
+.fog-layer {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 30% 60%, rgba(255,255,255,0.08), transparent 55%),
+              radial-gradient(circle at 60% 40%, rgba(150,220,255,0.10), transparent 60%),
+              radial-gradient(circle at 70% 70%, rgba(200,160,255,0.08), transparent 65%);
+  filter: blur(30px);
+  opacity: 0.45;
+  mix-blend-mode: screen;
+  transform: translateZ(0);
+}
+
+.fog-1 { animation: fogMove1 14s ease-in-out infinite; }
+.fog-2 { animation: fogMove2 18s ease-in-out infinite; opacity: 0.35; }
+.fog-3 { animation: fogMove3 22s ease-in-out infinite; opacity: 0.25; }
+
+@keyframes fogMove1 {
+  0% { transform: translate(-2%, 1%) scale(1.02); }
+  50% { transform: translate(2%, -1%) scale(1.08); }
+  100% { transform: translate(-2%, 1%) scale(1.02); }
+}
+@keyframes fogMove2 {
+  0% { transform: translate(2%, -2%) scale(1.05); }
+  50% { transform: translate(-3%, 2%) scale(1.10); }
+  100% { transform: translate(2%, -2%) scale(1.05); }
+}
+@keyframes fogMove3 {
+  0% { transform: translate(0%, 2%) scale(1.0); }
+  50% { transform: translate(2%, 0%) scale(1.06); }
+  100% { transform: translate(0%, 2%) scale(1.0); }
+}
